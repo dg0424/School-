@@ -1,10 +1,10 @@
-
 name: Build School Management Android APK
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir extracted
           unzip -q School_Management_System_Project.zip -d extracted
-          cp -a extracted/School_Management_System/. .
+          cp -a extracted/. .
 
       - name: Generate Android project
         run: flutter create --platforms=android .
@@ -39,4 +39,3 @@ jobs:
         with:
           name: School-Management-Android-APK
           path: build/app/outputs/flutter-apk/app-release.apk
-          
